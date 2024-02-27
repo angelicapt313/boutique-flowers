@@ -24,6 +24,29 @@
     animation: rotation 5s infinite linear;
 }
 
+.row{
+    width: 90%;
+    margin: 20px auto;
+}
+
+.price{
+    margin-bottom: 0;
+}
+
+.card-body{
+    padding: 0;
+}
+
+.add{
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--second-color);
+}
+
 
 @keyframes rotation {
     from{
