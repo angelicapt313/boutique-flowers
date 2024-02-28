@@ -3,13 +3,18 @@
     --light-lilac: #dce0ec;
     --mauve-pink:#966461;
     --light-gray:#747b8b;
-    --black: #0000;
+    --black: #000;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+   font-family: "Roboto Slab", serif; 
+  /*   font-family: "Kanit", sans-serif; */
 }
 
 .navbar{
@@ -29,22 +34,35 @@
     margin: 20px auto;
 }
 
+.card{
+    padding: 0;
+}
+
 .price{
     margin-bottom: 0;
+    color: var(--light-gray);
 }
+
 
 .card-body{
     padding: 0;
 }
 
+.card-title{
+    color: var(--black);
+}
+
 .add{
-    width: 50%;
+    width: 40%;
+    display: inline;
     margin: 0 auto;
     margin-bottom: 8px;
     border-radius: 20px;
     text-align: center;
     text-decoration: none;
     background-color: var(--light-lilac);
+    color: var(--mauve-pink);
+    font-size: 17px;
 }
 
 
