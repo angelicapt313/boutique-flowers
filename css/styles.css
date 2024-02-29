@@ -18,15 +18,30 @@ body{
 }
 
 .navbar{
-    background-color: var(--lilac)
+    background-color: var(--lilac);
+    height: 70px;
+}
+
+.navbar_left{
+    display: flex;
+    justify-content: center;
 }
 
 .navbar-brand{
-    margin: auto;
+    font-family: "Kanit", sans-serif; 
+    font-weight: bold;
+    color: var(--light-gray);
 }
 
 .img__logo{
     animation: rotation 5s infinite linear;
+}
+
+.img-cart{
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    color: antiquewhite;
 }
 
 .row{
