@@ -37,7 +37,7 @@ body{
     animation: rotation 5s infinite linear;
 }
 
-.img-cart{
+.img_cart{
     width: 30px;
     height: 30px;
     margin: 0 auto;
@@ -48,6 +48,32 @@ body{
     width: 90%;
     margin: 20px auto;
 }
+
+ul{
+    margin: 0;
+}
+
+.submenu{
+    position: relative;
+    list-style: none;
+}
+
+.submenu #cart{
+    display: none;
+}
+
+.submenu:hover #cart{
+    display: block;
+    position: absolute;
+    right: 19px;
+    top: 150%;
+    z-index: 1;
+    background-color: white;
+    padding: 13px;
+    min-height: 300px;
+    min-width: 100px;
+}
+
 
 .card{
     padding: 0;
