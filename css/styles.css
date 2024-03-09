@@ -81,6 +81,7 @@ body{
 
 .card{
     padding: 0;
+    margin: 0 auto;
 }
 
 .price{
@@ -120,3 +121,14 @@ body{
     }
 }
 
+
+
+/* @media (width < 768px) {
+    .cards{
+        display: grid;
+        grid-template-columns:  1fr;
+        gap: 30px;
+    } 
+    
+}
+*/
