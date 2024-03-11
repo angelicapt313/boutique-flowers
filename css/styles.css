@@ -13,9 +13,7 @@
 }
 
 body{
-   font-family: "Roboto Slab", serif; 
-  /*   font-family: "Kanit", sans-serif; */
-  
+   font-family: "Roboto Slab", serif;   
 }
 
 .container{
@@ -48,9 +46,15 @@ body{
     color: antiquewhite;
 }
 
+.content{
+    height: 100vh;
+    display: flex;
+    justify-content: center;    
+}
+
 .row{
     width: 90%;
-    margin: 20px auto;
+    margin: 20px 0;
 }
 
 .nav_submenu{
@@ -73,15 +77,23 @@ body{
     top: 150%;
     z-index: 1;
     background-color: white;
-    padding: 13px;
+    padding: 20px;
     min-height: 300px;
-    min-width: 100px;
+    min-width: 200px;
 }
 
+.cards{
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    
+}
 
 .card{
     padding: 0;
     margin: 0 auto;
+    width: 90%;
 }
 
 .price{
@@ -123,12 +135,33 @@ body{
 
 
 
-/* @media (width < 768px) {
+@media (width <= 1250px) {
     .cards{
         display: grid;
-        grid-template-columns:  1fr;
-        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (width <= 992px) {
+    .cards{
+        display: grid;
+        grid-template-columns:  repeat(2, 1fr);
+        gap: 20px;
+     
     } 
     
 }
-*/
+
+
+
+@media (width < 576px) {
+    .cards{
+        display: grid;
+        grid-template-columns:  1fr;
+        gap: 20px;
+        
+    } 
+    
+}
+
