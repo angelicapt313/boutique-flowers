@@ -15,3 +15,14 @@ function addCart(e){
     }
 }
 
+// Leer datos de la tarjeta
+function readData(card){
+    const infoCard = {
+        img: card.querySelector('img').src,
+        price: card.querySelector('.price').textContent,
+        title: card.querySelector('h6').textContent,
+        id: card.querySelector('.add').getAttribute('data-id'),
+        quantity: 1
+    }
+}
+
