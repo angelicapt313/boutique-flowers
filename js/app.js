@@ -4,25 +4,25 @@ const tableCart = document.querySelector('#cart_list tbody');
 let arrCart = [];
 
 eventListeners();
-function eventListeners(){
+function eventListeners() {
     cardsFlowers.addEventListener('click', addCart);
 }
 
 // Función agregar carrito
-function addCart(e){
+function addCart(e) {
 
     removeDuplicates();
 
-    if(e.target.classList.contains('add')){
+    if (e.target.classList.contains('add')) {
         const cardSelected = e.target.parentElement;
         readData(cardSelected);
         cartHtml();
     }
-    
+
 }
 
 // Leer datos de la tarjeta
-function readData(card){
+function readData(card) {
     const infoCard = {
         img: card.querySelector('img').src,
         price: card.querySelector('.price').textContent,
@@ -31,14 +31,31 @@ function readData(card){
         quantity: 1
     }
 
-    arrCart = [...arrCart, infoCard];
-   
+    // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
+    const flowerExists = arrCart.some(fl => fl.id === infoCard.id);
+
+    if (flowerExists) {
+        const updateCart = arrCart.map(fl => {
+            if (fl.id === infoCard.id) {
+                fl.quantity++;
+                return fl;
+            } else {
+                return fl;
+            }
+        });
+        arrCart = [...updateCart];
+    } else {
+        arrCart = [...arrCart, infoCard];
+    }
+
+
+
 }
 
 // Agregar información al carrito
-function cartHtml(){
+function cartHtml() {
     arrCart.forEach(cr => {
-        const {img, price, title, id, quantity} = cr;
+        const { img, price, title, id, quantity } = cr;
         // Crear renglon
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -54,8 +71,8 @@ function cartHtml(){
 }
 
 // Eliminar duplicados de la lista de compras.
-function removeDuplicates(){
-    while(tableCart.firstChild){
+function removeDuplicates() {
+    while (tableCart.firstChild) {
         tableCart.removeChild(tableCart.firstChild);
     }
 }
