@@ -1,11 +1,14 @@
 const cardsFlowers = document.querySelector('.list_flowers');
 const tableCart = document.querySelector('#cart_list tbody');
+const cart = document.querySelector('#cart');
 
 let arrCart = [];
 
 eventListeners();
 function eventListeners() {
     cardsFlowers.addEventListener('click', addCart);
+
+    cart.addEventListener('click', deleteFlower);
 }
 
 // Función agregar carrito
@@ -47,13 +50,13 @@ function readData(card) {
     } else {
         arrCart = [...arrCart, infoCard];
     }
-
-
-
 }
 
 // Agregar información al carrito
 function cartHtml() {
+
+    removeDuplicates();
+
     arrCart.forEach(cr => {
         const { img, price, title, id, quantity } = cr;
         // Crear renglon
@@ -63,7 +66,7 @@ function cartHtml() {
         <td>${price}</td>
         <td>${title}</td>
         <td>${quantity}</td>
-        <td><a href="#" class="btn btn-danger" data-id="${id}">X</a></td>
+        <td><a href="#" class="delete btn btn-danger" data-id="${id}">X</a></td>
         `;
 
         tableCart.appendChild(row);
@@ -75,4 +78,14 @@ function removeDuplicates() {
     while (tableCart.firstChild) {
         tableCart.removeChild(tableCart.firstChild);
     }
+}
+
+function deleteFlower(e){
+    e.preventDefault();
+    if(e.target.classList.contains('delete')){
+        const flowerId = e.target.getAttribute('data-id');
+
+        arrCart = arrCart.filter(fl => fl.id !== flowerId);
+    }
+   cartHtml();
 }
