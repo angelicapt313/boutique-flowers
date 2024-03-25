@@ -1,6 +1,7 @@
 const cardsFlowers = document.querySelector('.list_flowers');
 const tableCart = document.querySelector('#cart_list tbody');
 const cart = document.querySelector('#cart');
+const emptyList = document.querySelector('.empty');
 
 let arrCart = [];
 
@@ -9,6 +10,13 @@ function eventListeners() {
     cardsFlowers.addEventListener('click', addCart);
 
     cart.addEventListener('click', deleteFlower);
+
+    emptyList.addEventListener('click', emptyCart => {
+
+        arrCart = [];
+
+        removeDuplicates();
+    });
 }
 
 // Función agregar carrito
