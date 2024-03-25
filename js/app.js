@@ -10,6 +10,9 @@ function eventListeners(){
 
 // Función agregar carrito
 function addCart(e){
+
+    removeDuplicates();
+
     if(e.target.classList.contains('add')){
         const cardSelected = e.target.parentElement;
         readData(cardSelected);
@@ -48,4 +51,11 @@ function cartHtml(){
 
         tableCart.appendChild(row);
     });
+}
+
+// Eliminar duplicados de la lista de compras.
+function removeDuplicates(){
+    while(tableCart.firstChild){
+        tableCart.removeChild(tableCart.firstChild);
+    }
 }
