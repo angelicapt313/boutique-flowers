@@ -30,6 +30,7 @@ body{
 }
 
 .navbar-brand{
+    margin: 0 10px;
     font-family: "Kanit", sans-serif; 
     font-weight: bold;
     color: var(--light-gray);
@@ -40,8 +41,8 @@ body{
 }
 
 .img_cart{
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin: 0 auto;
     color: antiquewhite;
 }
@@ -73,8 +74,8 @@ body{
 .submenu:hover #cart{
     display: block;
     position: absolute;
-    right: 19px;
-    top: 150%;
+    right: 8px;
+    top: 156%;
     z-index: 1;
     background-color: white;
     padding: 20px;

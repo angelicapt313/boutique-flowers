@@ -11,7 +11,7 @@ function eventListeners() {
 
     cart.addEventListener('click', deleteFlower);
 
-    emptyList.addEventListener('click', emptyCart => {
+    emptyList.addEventListener('click', () => {
 
         arrCart = [];
 
@@ -25,30 +25,34 @@ function addCart(e) {
     removeDuplicates();
 
     if (e.target.classList.contains('add')) {
-        const cardSelected = e.target.parentElement;
-        readData(cardSelected);
+        const selectedArticle = e.target.parentElement;
+        informationArticle(selectedArticle);
         cartHtml();
     }
 
 }
 
+let total = '';
+
 // Leer datos de la tarjeta
-function readData(card) {
-    const infoCard = {
-        img: card.querySelector('img').src,
-        price: card.querySelector('.price').textContent,
-        title: card.querySelector('h6').textContent,
-        id: card.querySelector('.add').getAttribute('data-id'),
+function informationArticle(article) {
+    const contentArticle = {
+        img: article.querySelector('img').src,
+        price: article.querySelector('.price').textContent,
+        title: article.querySelector('h6').textContent,
+        id: article.querySelector('.add').getAttribute('data-id'),
         quantity: 1
     }
 
     // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
-    const flowerExists = arrCart.some(fl => fl.id === infoCard.id);
+    const articleExists = arrCart.some(fl => fl.id === contentArticle.id);
 
-    if (flowerExists) {
+    if (articleExists) {
         const updateCart = arrCart.map(fl => {
-            if (fl.id === infoCard.id) {
+            if (fl.id === contentArticle.id) {
                 fl.quantity++;
+                total = parseFloat(fl.price) * fl.quantity;
+                console.log(total);
                 return fl;
             } else {
                 return fl;
@@ -56,7 +60,7 @@ function readData(card) {
         });
         arrCart = [...updateCart];
     } else {
-        arrCart = [...arrCart, infoCard];
+        arrCart = [...arrCart, contentArticle];
     }
 }
 
@@ -65,16 +69,19 @@ function cartHtml() {
 
     removeDuplicates();
 
+
+
     arrCart.forEach(cr => {
         const { img, price, title, id, quantity } = cr;
         // Crear renglon
         const row = document.createElement('tr');
         row.innerHTML = `
         <td><img src="${img}" width="50px"> </td>
-        <td>${price}</td>
+        <td>$${total}</td>
         <td>${title}</td>
         <td>${quantity}</td>
         <td><a href="#" class="delete btn btn-danger" data-id="${id}">X</a></td>
+       
         `;
 
         tableCart.appendChild(row);
