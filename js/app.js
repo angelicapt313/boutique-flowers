@@ -2,6 +2,7 @@ const cardsFlowers = document.querySelector('.list_flowers');
 const tableCart = document.querySelector('#cart_list tbody');
 const cart = document.querySelector('#cart');
 const emptyList = document.querySelector('.empty');
+const priceParr = document.querySelector('.price')
 
 let arrCart = [];
 
@@ -44,14 +45,21 @@ function informationArticle(article) {
         quantity: 1
     }
 
-    // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
-    const articleExists = arrCart.some(fl => fl.id === contentArticle.id);
+    verificateExisteArticle(contentArticle);
+}
+
+// Verificar si existe algún ID en nuestro objeto para agregar cantidad y actualizar el total
+function verificateExisteArticle(article){
+
+ // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
+    const articleExists = arrCart.some(fl => fl.id === article.id);
 
     if (articleExists) {
         const updateCart = arrCart.map(fl => {
-            if (fl.id === contentArticle.id) {
+            if (fl.id === article.id) {
                 fl.quantity++;
                 total = parseFloat(fl.price) * fl.quantity;
+                fl.price  = total;
                 console.log(total);
                 return fl;
             } else {
@@ -60,9 +68,11 @@ function informationArticle(article) {
         });
         arrCart = [...updateCart];
     } else {
-        arrCart = [...arrCart, contentArticle];
+        arrCart = [...arrCart, article];
+
     }
 }
+
 
 // Agregar información al carrito
 function cartHtml() {
@@ -77,7 +87,7 @@ function cartHtml() {
         const row = document.createElement('tr');
         row.innerHTML = `
         <td><img src="${img}" width="50px"> </td>
-        <td>$${total}</td>
+        <td>$${price}</td>
         <td>${title}</td>
         <td>${quantity}</td>
         <td><a href="#" class="delete btn btn-danger" data-id="${id}">X</a></td>
