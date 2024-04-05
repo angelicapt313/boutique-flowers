@@ -55,13 +55,13 @@
   <div class="row cards">
     <div class="col">
       <div class="card">
-        <img src="/src/peonias.jpg" class="img-thumbnail" alt="...">
-        <p class="price text-center">43.99</p>
+        <img src="/src/peonias.jpg" class="img-thumbnail" alt="..." id="imagenProducto">
+        <p class="price text-center" id="precioProducto">43.99</p>
         <div class="card-body">
-          <h6 class="card-title text-center">Velvet Rosé</h6>
+          <h6 class="card-title text-center" id="nombreProducto">Velvet Rosé</h6>
         </div>
 
-        <a href="#" class="add" data-id="1">Add</a>
+        <a href="#" class="add" data-id="1" onclick="addToCart(imagenProducto, precioProducto, nombreProducto)">Add</a>
       </div>
     </div>
 
