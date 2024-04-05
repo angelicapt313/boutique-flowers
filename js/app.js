@@ -19,11 +19,25 @@ class Article{
 // Función agregar carrito
 function addToCart(imagenProducto,nombreProducto, precioProducto) {
     debugger
+    updateCard(nombreProducto, precioProducto);
+  
+    arrCart.push(`${imagenProducto.src}, ${nombreProducto}, ${precioProducto}`);
+
     productCard.innerHTML = `
     <td><img src="${imagenProducto.src}" width="100px"></td>
     <td>${nombreProducto.textContent}</td>
     <td>${precioProducto.textContent}</td>
     `;
+}
+
+function updateCard(nombreProducto, precioProducto){
+    debugger
+    let productExist = arrCart.indexOf(nombreProducto.textContent);
+    if(productExist > -1){
+       
+    }else{
+
+    }
 }
    
 
