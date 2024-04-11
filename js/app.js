@@ -33,6 +33,7 @@ function addCart(e) {
 
 }
 
+
 let total = '';
 
 // Leer datos de la tarjeta
@@ -58,9 +59,7 @@ function verificateExisteArticle(article){
         const updateCart = arrCart.map(fl => {
             if (fl.id === article.id) {
                 fl.quantity++;
-                total = parseFloat(fl.price) * fl.quantity;
-                fl.price  = total;
-                console.log(total);
+                 addPrices(fl);
                 return fl;
             } else {
                 return fl;
@@ -71,6 +70,11 @@ function verificateExisteArticle(article){
         arrCart = [...arrCart, article];
 
     }
+}
+
+function addPrices(article){
+    total = parseFloat(article.price) * article.quantity;
+    article.price = total;
 }
 
 
@@ -114,3 +118,5 @@ function deleteFlower(e){
     }
    cartHtml();
 }
+
+
