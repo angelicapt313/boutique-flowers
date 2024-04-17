@@ -73,8 +73,8 @@ function verificateExisteArticle(article){
 }
 
 function addPrices(article){
-    total = parseFloat(article.price) * article.quantity;
-    article.price = total;
+    total = Number.parseFloat(article.price) * article.quantity;
+    article.price = Number.parseFloat(total).toFixed(2);
 }
 
 
@@ -89,12 +89,13 @@ function cartHtml() {
         const { img, price, title, id, quantity } = cr;
         // Crear renglon
         const row = document.createElement('tr');
+        row.classList.add('text-center')
         row.innerHTML = `
-        <td><img src="${img}" width="50px"> </td>
-        <td>$${price}</td>
-        <td>${title}</td>
-        <td>${quantity}</td>
-        <td><a href="#" class="delete btn btn-danger" data-id="${id}">X</a></td>
+        <td class="align-middle text-center p-0"><img src="${img}" width="65px"> </td>
+        <td class="align-middle text-center p-0  ">$${price}</td>
+        <td class="align-middle text-center p-0  ">${title}</td>
+        <td class="align-middle p-0 ">${quantity}</td>
+        <td class="align-middle p-0 "><a href="#" class="delete btn btn-danger my-3" data-id="${id}" >X</a></td>
        
         `;
 

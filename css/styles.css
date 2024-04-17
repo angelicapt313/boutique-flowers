@@ -74,13 +74,15 @@ body{
 .submenu:hover #cart{
     display: block;
     position: absolute;
+    width: 450px;
+    min-height: 200px;
     right: 8px;
     top: 156%;
     z-index: 1;
     background-color: white;
-    padding: 20px;
-    min-height: 300px;
-    min-width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    
 }
 
 .cards{
@@ -154,9 +156,10 @@ body{
     
 }
 
-
-
 @media (width < 576px) {
+
+    
+
     .cards{
         display: grid;
         grid-template-columns:  1fr;
@@ -165,4 +168,33 @@ body{
     } 
     
 }
+
+
+@media (width < 480px) {
+
+    .submenu:hover #cart{
+        display: block;
+        position: absolute;
+        width: 350px;
+        min-height: 200px; 
+        right: 0;
+        top: 156%;
+        z-index: 1;
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        
+    }
+
+    #cart{
+        font-size: 16px;
+    }
+
+    .empty{
+        width: 300px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+}
+
 
