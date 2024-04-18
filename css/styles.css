@@ -49,8 +49,8 @@ body{
 
 .content{
     height: 100vh;
-    display: flex;
-    justify-content: center;    
+   display: flex;
+   justify-content: center;
 }
 
 .row{
