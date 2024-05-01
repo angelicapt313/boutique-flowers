@@ -47,6 +47,18 @@ body{
     color: antiquewhite;
 }
 
+.total{
+    font-weight: bold;
+    text-align: center;
+    padding: 6px;
+    font-size: 17px;
+    margin: 8px;
+}
+
+.totalAmout{
+    pointer-events: none;
+}
+
 .content{
     height: 100vh;
    display: flex;
@@ -75,7 +87,7 @@ body{
     display: block;
     position: absolute;
     width: 450px;
-    min-height: 200px;
+   min-height: 250px;
     right: 8px;
     top: 156%;
     z-index: 1;

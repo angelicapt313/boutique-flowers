@@ -3,6 +3,7 @@ const tableCart = document.querySelector('#cart_list tbody');
 const cart = document.querySelector('#cart');
 const emptyList = document.querySelector('.empty');
 const priceParr = document.querySelector('.price')
+const totalAmount = document.querySelector('.totalAmout');
 
 let arrCart = [];
 
@@ -34,7 +35,8 @@ function addCart(e) {
 }
 
 
-let total = '';
+let total = 0;
+let totalProducts = 0;
 
 // Leer datos de la tarjeta
 function informationArticle(article) {
@@ -50,16 +52,16 @@ function informationArticle(article) {
 }
 
 // Verificar si existe algún ID en nuestro objeto para agregar cantidad y actualizar el total
-function verificateExisteArticle(article){
+function verificateExisteArticle(article) {
 
- // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
+    // Método some para verificar si alguna tarjeta existe, si sí existe, actualizamos cantidad
     const articleExists = arrCart.some(fl => fl.id === article.id);
 
     if (articleExists) {
         const updateCart = arrCart.map(fl => {
             if (fl.id === article.id) {
                 fl.quantity++;
-                 addPrices(fl);
+                addPrices(fl);
                 return fl;
             } else {
                 return fl;
@@ -72,9 +74,10 @@ function verificateExisteArticle(article){
     }
 }
 
-function addPrices(article){
+function addPrices(article) {
     total = Number.parseFloat(article.price) * article.quantity;
     article.price = Number.parseFloat(total).toFixed(2);
+
 }
 
 
@@ -100,7 +103,13 @@ function cartHtml() {
         `;
 
         tableCart.appendChild(row);
+
+        totalProducts = total + Number.parseFloat(cr.quantity * cr.price);
+        
     });
+
+    
+
 }
 
 // Eliminar duplicados de la lista de compras.
@@ -110,14 +119,14 @@ function removeDuplicates() {
     }
 }
 
-function deleteFlower(e){
+function deleteFlower(e) {
     e.preventDefault();
-    if(e.target.classList.contains('delete')){
+    if (e.target.classList.contains('delete')) {
         const flowerId = e.target.getAttribute('data-id');
 
         arrCart = arrCart.filter(fl => fl.id !== flowerId);
     }
-   cartHtml();
+    cartHtml();
 }
 
 
