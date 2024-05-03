@@ -56,6 +56,13 @@
     </ul>
   </nav>
 
+  <script>
+    (async function() {
+        const { text } = await( await fetch(`/api/message`)).json();
+        document.querySelector('#name').textContent = text;
+    }());
+    </script>
+
   <div class="content list_flowers">
     <div class="row">
       <div class="cards">
